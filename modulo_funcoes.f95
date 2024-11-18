@@ -1,6 +1,7 @@
-module funcoes
+module modulo_funcoes
     implicit none
-contains
+    
+    contains
 
     function sao_iguais(a, b) result(resultado)
         integer, intent(in) :: a, b
@@ -45,32 +46,6 @@ contains
             resultado = b
         endif
     end function menor
-
-    function pode_formar_triangulo(a, b, c) result(eh_triangulo)
-        real, intent(in) :: a, b, c
-        logical :: eh_triangulo
-        eh_triangulo = (a < (b + c)) .and. (b < (a + c)) .and. (c < (a + b))
-    end function pode_formar_triangulo
-
-    function calcular_perimetro_de_triangulo(a, b, c) result (resultado)
-        real, intent(in) :: a, b, c
-        real :: resultado
-        resultado = a + b + c
-    end function calcular_perimetro_de_triangulo
-
-    function calcular_semiperimetro_de_triangulo(a, b, c) result(resultado)
-        real, intent(in) :: a, b, c
-        real :: resultado
-        resultado = calcular_perimetro_de_triangulo(a, b, c) / 2.0
-    end function calcular_semiperimetro_de_triangulo
-
-    function calcular_area_de_triangulo(a, b, c) result(resultado)
-        real, intent(in) :: a, b, c
-        real :: p ! semi-perimetro
-        real :: resultado 
-        p = calcular_semiperimetro_de_triangulo(a, b, c)
-        resultado = sqrt(p * (p - a) * (p - b) * (p - c))
-    end function calcular_area_de_triangulo
 
     function eh_par(a) result(resultado)
         integer, intent(in) :: a
@@ -151,6 +126,13 @@ contains
         resultado = a * (pi() / 180.0)
     end function converter_angulo_de_graus_para_radianos
 
+    function converter_temperatura_farenheit_para_celsius(valor) result(resultado)
+        implicit none
+        real, intent(in) :: valor
+        real :: resultado
+        resultado = (valor - 32.0) * (5. / 9.)
+    end function converter_temperatura_farenheit_para_celsius
+
     function divisao(a, b) result(resultado)
         implicit none
         real, intent(in) :: a, b
@@ -165,4 +147,18 @@ contains
         resultado = a * b
     end function multiplicacao
 
-end module funcoes
+    function calcular_area_circulo(raio) result(resultado)
+        implicit none
+        real, intent(in) :: raio
+        real :: resultado
+        resultado = pi() * (raio ** 2)
+    end function calcular_area_circulo
+
+    function calcular_imc(peso, altura) result(resultado)
+        implicit none
+        real, intent(in) :: peso, altura
+        real :: resultado
+        resultado = peso / (altura ** 2)
+    end function calcular_imc
+
+end module modulo_funcoes

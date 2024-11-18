@@ -1,4 +1,4 @@
-program app
+program app_mru
 
     use leitura
     use movimento_retilineo_uniforme 
@@ -45,5 +45,5 @@ program app
         end select
     end do
 
-end program app
+end program app_mru
 

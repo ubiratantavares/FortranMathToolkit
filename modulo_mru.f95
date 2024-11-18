@@ -1,4 +1,4 @@
-module movimento_retilineo_uniforme
+module modulo_mru 
     use funcoes
     implicit none
 contains
@@ -24,4 +24,4 @@ contains
         resultado = divisao(distancia_km, velocidade_media_km_por_h)
     end function tempo
 
-end module movimento_retilineo_uniforme
+end module modulo_mru
